@@ -1,0 +1,12 @@
+# Working directory for local storage/cache.
+WORKINGDIR=/var/slapt-get
+
+# The Slackware repositories, including dependency information
+SOURCE=http://slackware.uk/salix/x86_64/slackware-14.2/:OFFICIAL
+SOURCE=http://slackware.uk/salix/x86_64/slackware-14.2/extra/:OFFICIAL
+
+# The Salix repository
+SOURCE=http://slackware.uk/salix/x86_64/14.2/:PREFERRED
+# And the Salix extra repository
+SOURCE=http://slackware.uk/salix/x86_64/extra-14.2/:OFFICIAL
+
