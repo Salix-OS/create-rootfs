@@ -1,0 +1,6 @@
+[submodule "docker-i486"]
+	path = docker-i486
+	url = https://github.com/Salix-OS/salix-docker
+[submodule "docker-x86_64"]
+	path = docker-x86_64
+	url = https://github.com/Salix-OS/salix64-docker
