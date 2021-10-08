@@ -2,11 +2,9 @@
 WORKINGDIR=/var/slapt-get
 
 # The Slackware repositories, including dependency information
-SOURCE=http://slackware.uk/salix/i486/slackware-14.2/:OFFICIAL
-SOURCE=http://slackware.uk/salix/i486/slackware-14.2/extra/:OFFICIAL
+SOURCE=http://slackware.uk/salix/i486/slackware-15.0/:OFFICIAL
+SOURCE=http://slackware.uk/salix/i486/slackware-15.0/extra/:OFFICIAL
 
 # The Salix repository
-SOURCE=http://slackware.uk/salix/i486/14.2/:PREFERRED
-# And the Salix extra repository
-SOURCE=http://slackware.uk/salix/i486/extra-14.2/:OFFICIAL
+SOURCE=http://slackware.uk/salix/i486/15.0/:PREFERRED
 

@@ -25,10 +25,10 @@ VERSIONS=docker-$ARCH/PKG_VERSIONS
 VERSIONS_TMP=`mktemp`
 
 rm -rf $ROOTFS pkgstore
-mkdir $ROOTFS pkgstore docker-$ARCH
+mkdir -p $ROOTFS pkgstore docker-$ARCH
 slapt-get --config slapt-getrc.$ARCH --update
 for pkg in `cat PKG_NAMES | cut -d'#' -f 1`; do
-	URI=`slapt-get --config slapt-getrc.$ARCH --install --reinstall --print-uris $pkg | grep "^http://"`
+	URI=`slapt-get --config slapt-getrc.$ARCH --install --reinstall --no-dep --print-uris $pkg | grep "^http://"`
 	PKGFILE=`basename $URI`
 	echo "Downloading $PKGFILE..."
 	[ ! -f pkgstore/$PKGFILE ] && wget -q -P pkgstore $URI
@@ -43,10 +43,12 @@ EOF
 cat $VERSIONS_TMP | sort | uniq >> $VERSIONS
 rm -f $VERSIONS_TMP
 
-# change the obsolete default repo
-sed -i "s#salix.hostingxtreme.com#slackware.uk/salix#" $ROOTFS/etc/slapt-get/slapt-getrc
 # sed default lang to en_US
 sed -i "s/^ *\(export LANG=\).*$/\1en_US.utf8/" $ROOTFS/etc/profile.d/lang.sh
+# add a nameserver
+echo "nameserver 1.1.1.1" > $ROOTFS/etc/resolv.conf
+# default symlink for elvis -> vi
+( cd $ROOTFS/usr/bin; ln -s elvis vi )
 
 # create the tarball
 cd rootfs-$ARCH
